@@ -5,7 +5,7 @@
 /* html, body, heading */
 @layer base {
   body {
-    @apply bg-[#141414];
+    @apply bg-[#141414] text-white !scrollbar-thin !scrollbar-track-transparent !scrollbar-thumb-red-600;
   }
 
   header {
@@ -21,5 +21,9 @@
 
   .bannerButton {
     @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:brightness-90 md:py-2.5 md:px-8 md:text-xl;
+  }
+
+  .scrollbar-transparent::-webkit-scrollbar {
+    background: transparent;
   }
 }

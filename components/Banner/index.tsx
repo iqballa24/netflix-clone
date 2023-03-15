@@ -13,7 +13,9 @@ const Banner: React.FC<{ movie: Movie | null }> = ({ movie }) => {
           alt=""
           src={`${BASE_URL}${movie?.backdrop_path || movie?.poster_path}`}
           fill
+          priority
           className="object-cover"
+          sizes='100%'
         />
       </div>
       <h2 className="text-2xl text-white font-bold md:text-4xl lg:text-7xl">
