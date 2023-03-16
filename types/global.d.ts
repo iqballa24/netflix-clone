@@ -30,3 +30,9 @@ export interface Element {
     | 'Trailer'
     | 'Teaser';
 }
+
+export interface FormAuth {
+  username: string;
+  email: string;
+  password: string;
+}
