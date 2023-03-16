@@ -1,10 +1,14 @@
 import Head from 'next/head';
+import { useRecoilValue } from 'recoil';
+import { useEffect, useState } from 'react';
+import { modalState } from '@/atoms/modalAtom';
+import { Movie } from '@/types/global';
+import requests from '@/utils/requests';
+
+import MovieRow from '@/components/MovieRow';
 import Header from '@/components/Header';
 import Banner from '@/components/Banner';
-import requests from '@/utils/requests';
-import { Movie } from '@/types/global';
-import { useEffect, useState } from 'react';
-import MovieRow from '@/components/MovieRow';
+import { ModalVideoPlayer } from '@/components/UI';
 
 interface Props {
   netflixOriginals: Movie[];
@@ -28,12 +32,13 @@ export default function Home({
   trendingNow,
 }: Props) {
   const [randomMovie, setRandomMovie] = useState<Movie | null>(null);
+  const showModal = useRecoilValue(modalState);
 
   useEffect(() => {
     setRandomMovie(
-      netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
+      trendingNow[Math.floor(Math.random() * trendingNow.length)]
     );
-  }, [netflixOriginals]);
+  }, [trendingNow]);
 
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
@@ -46,7 +51,7 @@ export default function Home({
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner movie={randomMovie} />
-        <section className='flex flex-col md:space-y-24'>
+        <section className="flex flex-col md:space-y-24">
           <MovieRow title="Trending Now" movies={trendingNow} />
           <MovieRow title="Top Rated" movies={topRated} />
           <MovieRow title="Action Thrillers" movies={actionMovies} />
@@ -56,6 +61,7 @@ export default function Home({
           <MovieRow title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {showModal && <ModalVideoPlayer />}
     </div>
   );
 }

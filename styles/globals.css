@@ -23,6 +23,10 @@
     @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:brightness-90 md:py-2.5 md:px-8 md:text-xl;
   }
 
+  .modalButton {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border-2 border-[gray] bg-[#2a2a2a]/60 transition hover:border-white hover:bg-white/10;
+  }
+
   .scrollbar-transparent::-webkit-scrollbar {
     background: transparent;
   }

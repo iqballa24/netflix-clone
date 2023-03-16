@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { BiLoaderCircle } from 'react-icons/bi';
 import { FormAuth } from '@/types/global';
 
-import Input from '@/components/UI';
+import { Input } from '@/components/UI';
 import useAuth from '@/libs/hooks/useAuth';
 
 const Login = () => {
@@ -110,7 +110,7 @@ const Login = () => {
                 className="flex justify-center py-3 text-white text-base min-h-[42px] rounded-md w-full mt-10 bg-[#e50914] hover:bg-red-700 transition"
               >
                 {formState.isSubmitting ? (
-                  <BiLoaderCircle className='animate-spin' size={24}/>
+                  <BiLoaderCircle className="animate-spin" size={24} />
                 ) : login ? (
                   'Sign in'
                 ) : (
