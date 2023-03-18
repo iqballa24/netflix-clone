@@ -22,7 +22,7 @@ const VideoPlayer: React.FC<Props> = ({ movieId, trailer }) => {
   const [likedMovie, setLikedMovie] = useRecoilState(likedMovieState);
   const hasAddToBookmark = bookmarkMovie.includes(movieId);
   const hasLikedMovie = likedMovie.includes(movieId);
-
+  
   const handleBookmark = () => {
     if (hasAddToBookmark) {
       setBookmarkMovie((prev) => prev.filter((item) => item !== movieId));

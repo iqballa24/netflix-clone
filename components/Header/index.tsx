@@ -35,8 +35,12 @@ const Header = () => {
           className="cursor-pointer object-contain"
         />
         <ul className="hidden space-x-4 md:flex">
-          <li className="headerLink">Home</li>
-          <li className="headerLink">Tv Shows</li>
+          <li className="headerLink">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="headerLink">
+            <Link href="/tvShow">Tv Shows</Link>
+          </li>
           <li className="headerLink">Movies</li>
           <li className="headerLink">News & Popular</li>
           <li className="headerLink">My List</li>
@@ -47,12 +51,12 @@ const Header = () => {
         <p className="hidden lg:inline">Kids</p>
         <BellIcon className="h-6 w-6" />
         {/* <Link href="/account"> */}
-          <img
-            onClick={logout}
-            src="https://rb.gy/g1pwyx"
-            alt=""
-            className="cursor-pointer rounded"
-          />
+        <img
+          onClick={logout}
+          src="https://rb.gy/g1pwyx"
+          alt=""
+          className="cursor-pointer rounded"
+        />
         {/* </Link> */}
       </div>
     </header>
