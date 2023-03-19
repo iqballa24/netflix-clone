@@ -18,3 +18,10 @@ export const requests_tv_shows = {
   fetchPopular: `${BASE_URL}/tv/popular?api_key=${API_KEY}&language=en-US`,
   fetchTopRated: `${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=en-US`,
 }
+
+export const requests_movies = {
+  fetchNowPlaying: `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US`,
+  fetchPopular: `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`,
+  fetchTopRated: `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`,
+  fetchUpComing: `${BASE_URL}/movie/upcoming?api_key=${API_KEY}&language=en-US`,
+}

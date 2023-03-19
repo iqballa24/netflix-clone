@@ -41,7 +41,10 @@ const Header = () => {
           <li className="headerLink">
             <Link href="/tvShow">Tv Shows</Link>
           </li>
-          <li className="headerLink">Movies</li>
+          <li className="headerLink">
+            {' '}
+            <Link href="/movies">Movies</Link>
+          </li>
           <li className="headerLink">News & Popular</li>
           <li className="headerLink">My List</li>
         </ul>
