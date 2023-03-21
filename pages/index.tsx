@@ -21,7 +21,6 @@ interface Props {
 }
 
 export default function Home({
-  netflixOriginals,
   actionMovies,
   comedyMovies,
   documentaries,

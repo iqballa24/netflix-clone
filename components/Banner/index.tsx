@@ -6,10 +6,13 @@ import { BASE_URL } from '@/constant/movie';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '@/atoms/modalAtom';
+import shortenText from '@/utils/shortenText';
+import Link from 'next/link';
 
 const Banner: React.FC<{ movie: Movie | null }> = ({ movie }) => {
-  const [showModal, setShowModal] = useRecoilState(modalState);
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const setShowModal = useRecoilState(modalState)[1];
+  const setCurrentMovie = useRecoilState(movieState)[1];
+  const overviewShorten = shortenText({ maxLen: 300, text: movie?.overview! });
 
   const detailMovieHandler = () => {
     setShowModal(true);
@@ -32,8 +35,8 @@ const Banner: React.FC<{ movie: Movie | null }> = ({ movie }) => {
         {movie?.title || movie?.original_title || movie?.name}
       </h2>
       <p className="max-w-xs text-shadow-md text-xs text-white md:max-w-lg md:text-lg lg:max-w-2xl lg:text-xl text-clip ">
-        {movie?.overview !== ''
-          ? movie?.overview
+        {overviewShorten !== ''
+          ? overviewShorten
           : "We don't have an overview translated in English."}
       </p>
       <div className="flex space-x-3">
@@ -43,9 +46,12 @@ const Banner: React.FC<{ movie: Movie | null }> = ({ movie }) => {
         >
           <FaPlay className="h-4 w-4 text-black md:h-7 md:w-7" /> Trailer
         </button>
-        <button className="bannerButton bg-[gray]/70">
+        <Link
+          href={`/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}`}
+          className="bannerButton bg-[gray]/70"
+        >
           More Info <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8" />
-        </button>
+        </Link>
       </div>
     </div>
   );

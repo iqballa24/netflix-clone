@@ -6,10 +6,11 @@ import { Movie } from '@/types/global';
 
 const Thumbnail: React.FC<Movie> = ({ ...movie }) => {
   const { poster_path, backdrop_path, title, original_title } = movie;
-  const [showModal, setShowModal] = useRecoilState(modalState);
-  const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const setShowModal = useRecoilState(modalState)[1];
+  const setCurrentMovie = useRecoilState(movieState)[1];
 
   const detailMovieHandler = () => {
+    console.log(movie)
     setShowModal(true);
     setCurrentMovie(movie);
   };

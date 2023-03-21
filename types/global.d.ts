@@ -3,6 +3,11 @@ export interface Genre {
   name: string;
 }
 
+export type genre = {
+  id: string;
+  name: string;
+};
+
 export interface Movie {
   title: string;
   name: string;
@@ -20,6 +25,9 @@ export interface Movie {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+  genres: genre[];
+  tagline: string;
+  status: string;
 }
 
 export interface Element {

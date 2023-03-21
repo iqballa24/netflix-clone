@@ -1,8 +1,9 @@
-import { Genre } from '@/types/global';
 import React from 'react';
+import TextDescription from '@/components/UI/TextDescription';
+import { Genre } from '@/types/global';
 
 interface Props {
-  vote_average: number|string;
+  vote_average: number | string;
   release_date: number;
   overview: string;
   genres: Genre[];
@@ -31,16 +32,12 @@ const VideoDescription: React.FC<Props> = ({
         <div className="flex flex-col gap-x-10 gap-y-4 font-light md:flex-row">
           <p className="w-5/6">{overview}</p>
           <div className="flex flex-col space-y-3 text-sm">
-            <div>
-              <span className="text-[gray]">Genres:</span>{' '}
-              {genres.map((genre) => genre.name).join(', ')}
-            </div>
-            <div>
-              <span className="text-[gray]">Original language:</span> {language}
-            </div>
-            <div>
-              <span className="text-[gray]">Total votes:</span> {vote}
-            </div>
+            <TextDescription
+              title="Genres"
+              text={genres.map((genre) => genre.name).join(', ')}
+            />
+            <TextDescription title="Original language" text={language} />
+            <TextDescription title="Total votes" text={vote} />
           </div>
         </div>
       </div>

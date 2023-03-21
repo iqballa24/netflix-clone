@@ -58,7 +58,11 @@ const ModalVideoPlayer = () => {
         >
           <HiXCircle className="h-8 w-8 hover:text-red-500 transition" />
         </button>
-        <VideoPlayer movieId={movie?.id} trailer={trailer} />
+        <VideoPlayer
+          movieId={movie?.id}
+          trailer={trailer}
+          mediaType={movie?.media_type === 'tv' ? 'tv' : 'movie'}
+        />
         <VideoDescription
           vote_average={(movie!.vote_average * 10).toFixed(2)}
           release_date={movie?.release_date || movie?.first_air_date}
