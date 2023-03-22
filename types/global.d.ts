@@ -30,6 +30,32 @@ export interface Movie {
   status: string;
 }
 
+type author = {
+  name: string;
+  username: string;
+  avatar_path: string;
+  rating: number;
+};
+interface Review {
+  author: string;
+  author_details: author;
+  content: string;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  url: string;
+}
+
+interface Cast {
+  adult: boolean;
+  gender: 1 | 2;
+  id: number | string;
+  name: string;
+  original_name: string;
+  profile_path: string;
+  character: string;
+}
+
 export interface Element {
   type:
     | 'Bloopers'

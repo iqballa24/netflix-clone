@@ -19,8 +19,6 @@ const BannerDetail: React.FC<Props> = ({ movie }) => {
     setCurrentMovie(movie);
   };
 
-  console.log(movie);
-
   const overview =
     movie?.overview !== ''
       ? movie?.overview
@@ -34,7 +32,7 @@ const BannerDetail: React.FC<Props> = ({ movie }) => {
     overview: overview,
     language: movie.original_language,
     vote: movie.vote_count,
-    release_date: movie.release_date ?? '',
+    release_date: movie.release_date ?? '-',
     handlePlay: detailMovieHandler,
     tagline: movie.tagline,
     status: movie.status
