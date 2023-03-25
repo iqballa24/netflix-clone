@@ -33,13 +33,17 @@ const ItemReview: React.FC<{ review: Review }> = ({ review }) => {
               {format(new Date(review.created_at), 'MMMM d, yyyy')}
             </p>
           </Stack>
-          <p>{readMore? review.content : content}</p>
+          <p>{readMore ? review.content : content}</p>
           <button
             type="button"
             onClick={readMoreHandler}
             className="text-end font-light text-sm cursor-pointer text-blue-400 hover:text-blue-500"
           >
-            {readMore? 'Less' : 'Read more'}
+            {content.length < maxContent
+              ? ''
+              : readMore
+              ? 'Less'
+              : 'Read more'}
           </button>
         </Stack>
       </ListItem>

@@ -79,11 +79,26 @@ export const getServerSideProps = async () => {
       netflixOriginals: netflixOriginals.results,
       trendingNow: trendingNow.results,
       topRated: topRated.results,
-      actionMovies: actionMovies.results,
-      comedyMovies: comedyMovies.results,
-      horrorMovies: horrorMovies.results,
-      romanceMovies: romanceMovies.results,
-      documentaries: documentaries.results,
+      actionMovies: actionMovies.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
+      comedyMovies: comedyMovies.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
+      horrorMovies: horrorMovies.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
+      romanceMovies: romanceMovies.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
+      documentaries: documentaries.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
     },
   };
 };

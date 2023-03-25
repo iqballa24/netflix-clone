@@ -47,10 +47,22 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      nowPlaying: nowPlaying.results,
-      popular: popular.results,
-      topRated: topRated.results,
-      upComing: upComing.results,
+      nowPlaying: nowPlaying.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
+      popular: popular.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
+      topRated: topRated.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
+      upComing: upComing.results.map((item: Object) => ({
+        ...item,
+        media_type: 'movie',
+      })),
     },
   };
 };

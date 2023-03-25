@@ -47,7 +47,7 @@ const Banner: React.FC<{ movie: Movie | null }> = ({ movie }) => {
           <FaPlay className="h-4 w-4 text-black md:h-7 md:w-7" /> Trailer
         </button>
         <Link
-          href={`/${movie?.media_type === 'tv' ? 'tv' : 'movie'}/${movie?.id}`}
+          href={`/${movie?.media_type === 'movie' ? 'movie' : 'tv'}/${movie?.id}`}
           className="bannerButton bg-[gray]/70"
         >
           More Info <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8" />

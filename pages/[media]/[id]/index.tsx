@@ -1,4 +1,6 @@
-import { useRecoilValue } from 'recoil';
+import { useEffect } from 'react';
+import Image from 'next/image';
+import { useRecoilState } from 'recoil';
 import { Cast, Movie, Review } from '@/types/global';
 import { GetServerSideProps } from 'next';
 import { modalState } from '@/atoms/modalAtom';
@@ -6,17 +8,6 @@ import { modalState } from '@/atoms/modalAtom';
 import { ModalVideoPlayer, Slider } from '@/components/UI';
 import Layout from '@/components/Layout';
 import BannerDetail from '@/components/Detail/Banner';
-import Image from 'next/image';
-import {
-  Avatar,
-  Divider,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-} from '@mui/material';
-import { Stack } from '@mui/system';
-import { format } from 'date-fns';
 import Reviews from '@/components/Reviews';
 
 const Detail = ({
@@ -28,9 +19,11 @@ const Detail = ({
   reviews: Review[];
   cast: Cast[];
 }) => {
-  const showModal = useRecoilValue(modalState);
+  const [showModal, setShowModal] = useRecoilState(modalState);
 
-  console.log(reviews);
+  useEffect(() => {
+    setShowModal(false);
+  }, [setShowModal]);
 
   return (
     <Layout
@@ -81,7 +74,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   ]);
 
   return {
-    props: { movie: detailMovie, reviews: reviews.results, cast: credits.cast },
+    props: {
+      movie: { ...detailMovie, media_type: media },
+      reviews: reviews.results,
+      cast: credits.cast,
+    },
   };
 };
 

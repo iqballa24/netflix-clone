@@ -10,7 +10,6 @@ const Thumbnail: React.FC<Movie> = ({ ...movie }) => {
   const setCurrentMovie = useRecoilState(movieState)[1];
 
   const detailMovieHandler = () => {
-    console.log(movie)
     setShowModal(true);
     setCurrentMovie(movie);
   };

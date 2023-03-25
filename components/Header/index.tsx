@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import useAuth from '@/libs/hooks/useAuth';
-import { BellIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { AiOutlineLogout } from 'react-icons/ai';
+import useAuth from '@/libs/hooks/useAuth';
+import { menus } from '@/constant/menus';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,32 +36,18 @@ const Header = () => {
           className="cursor-pointer object-contain"
         />
         <ul className="hidden space-x-4 md:flex">
-          <li className="headerLink">
-            <Link href="/">Home</Link>
-          </li>
-          <li className="headerLink">
-            <Link href="/tvShow">Tv Shows</Link>
-          </li>
-          <li className="headerLink">
-            {' '}
-            <Link href="/movies">Movies</Link>
-          </li>
-          <li className="headerLink">News & Popular</li>
-          <li className="headerLink">My List</li>
+          {menus.map((menu) => (
+            <li key={menu.id} className="headerLink">
+              <Link href={menu.path}>{menu.name}</Link>
+            </li>
+          ))}
         </ul>
       </div>
-      <div className="flex items-center space-x-4 text-white text-sm font-light">
-        <MagnifyingGlassIcon className="hidden h-6 w-6 sm:inline" />
-        <p className="hidden lg:inline">Kids</p>
-        <BellIcon className="h-6 w-6" />
-        {/* <Link href="/account"> */}
-        <img
-          onClick={logout}
-          src="https://rb.gy/g1pwyx"
-          alt=""
-          className="cursor-pointer rounded"
-        />
-        {/* </Link> */}
+      <div className="flex items-center space-x-4 text-white font-light">
+        <span>{user?.displayName || 'user'}</span>
+        <button type="button" onClick={logout}>
+          <AiOutlineLogout size={22} className="hover:text-red-700" />
+        </button>
       </div>
     </header>
   );

@@ -19,7 +19,7 @@ const ModalVideoPlayer = () => {
     async function fetchMovie() {
       const res = await fetch(
         `https://api.themoviedb.org/3/${
-          movie?.media_type === 'tv' ? 'tv' : 'movie'
+          movie?.media_type === 'movie' ? 'movie' : 'tv'
         }/${movie?.id}?api_key=${
           process.env.NEXT_PUBLIC_API_KEY
         }&language=en-US&append_to_response=videos`
@@ -61,7 +61,7 @@ const ModalVideoPlayer = () => {
         <VideoPlayer
           movieId={movie?.id}
           trailer={trailer}
-          mediaType={movie?.media_type === 'tv' ? 'tv' : 'movie'}
+          mediaType={movie?.media_type === 'movie' ? 'movie' : 'tv'}
         />
         <VideoDescription
           vote_average={(movie!.vote_average * 10).toFixed(2)}
