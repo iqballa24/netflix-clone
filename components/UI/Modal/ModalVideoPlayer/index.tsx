@@ -18,11 +18,9 @@ const ModalVideoPlayer = () => {
 
     async function fetchMovie() {
       const res = await fetch(
-        `https://api.themoviedb.org/3/${
+        `http://localhost:3000/api/detail/${movie?.id}?media=${
           movie?.media_type === 'movie' ? 'movie' : 'tv'
-        }/${movie?.id}?api_key=${
-          process.env.NEXT_PUBLIC_API_KEY
-        }&language=en-US&append_to_response=videos`
+        }`
       )
         .then((response) => response.json())
         .catch((err) => console.log(err));

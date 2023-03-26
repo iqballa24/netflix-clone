@@ -100,7 +100,7 @@ const BannerDescription: React.FC<Props> = ({
             )}
           </button>
           <button
-            className="bg-transparent text-white flex flex-row gap-3"
+            className="bg-transparent text-white flex flex-row items-center gap-3"
             onClick={handlePlay}
           >
             <FaPlay className="h-4 w-4 md:h-7 md:w-7" /> Play Trailer
