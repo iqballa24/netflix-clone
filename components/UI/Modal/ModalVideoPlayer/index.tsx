@@ -18,9 +18,10 @@ const ModalVideoPlayer = () => {
 
     async function fetchMovie() {
       const res = await fetch(
-        `http://localhost:3000/api/detail/${movie?.id}?media=${
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/detail/${movie?.id}?media=${
           movie?.media_type === 'movie' ? 'movie' : 'tv'
-        }`
+        }`,
+        { mode: 'no-cors' }
       )
         .then((response) => response.json())
         .catch((err) => console.log(err));
