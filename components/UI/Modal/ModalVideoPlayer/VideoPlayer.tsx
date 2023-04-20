@@ -41,9 +41,11 @@ const VideoPlayer: React.FC<Props> = ({ movieId, trailer, mediaType }) => {
     }
   };
 
+  console.log({ trailer });
+
   return (
-    <div className="relative pt-[56.25%]">
-      {trailer && (
+    <div className="relative pt-[56.25%] bg-black/60">
+      {trailer ? (
         <ReactPlayer
           url={`https://www.youtube.com/watch?v=${trailer}`}
           width="100%"
@@ -51,6 +53,10 @@ const VideoPlayer: React.FC<Props> = ({ movieId, trailer, mediaType }) => {
           style={{ position: 'absolute', top: '0', left: '0' }}
           muted={muted}
         />
+      ) : (
+        <div className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">
+          <p className="text-sm md:text-lg text-gray-400">Trailer unavalaible</p>
+        </div>
       )}
       <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
         <div className="flex space-x-4 items-center">
