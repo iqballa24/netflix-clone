@@ -13,6 +13,7 @@ const Reviews: React.FC<{ data: Review[] }> = ({ data }) => {
         {data.map((review) => (
           <ItemReview key={review.id} review={review} />
         ))}
+        {data.length === 0 && <p>The film has no reviews yet</p>}
       </Stack>
     </Stack>
   );
