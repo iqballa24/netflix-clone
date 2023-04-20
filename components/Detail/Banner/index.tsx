@@ -35,7 +35,8 @@ const BannerDetail: React.FC<Props> = ({ movie }) => {
     release_date: movie.release_date ?? '-',
     handlePlay: detailMovieHandler,
     tagline: movie.tagline,
-    status: movie.status
+    status: movie.status,
+    vote_average: movie?.vote_average.toFixed(2),
   };
 
   return (

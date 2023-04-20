@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { FaPlay } from 'react-icons/fa';
+import { FaPlay, FaStar } from 'react-icons/fa';
 import {
   HiOutlineCheck,
   HiOutlinePlus,
@@ -9,7 +9,7 @@ import {
 } from 'react-icons/hi2';
 import { bookmarkMovieState, likedMovieState } from '@/atoms/modalAtom';
 import { useRecoilState } from 'recoil';
-import { TextDescription } from '@/components/UI';
+import { BadgeStar, TextDescription } from '@/components/UI';
 
 interface Props {
   id: string;
@@ -19,6 +19,7 @@ interface Props {
   genre: string;
   language: string;
   vote: number;
+  vote_average: number | string;
   release_date: string;
   handlePlay: () => void;
   tagline: string;
@@ -33,10 +34,11 @@ const BannerDescription: React.FC<Props> = ({
   genre,
   language,
   vote,
+  vote_average,
   release_date,
   handlePlay,
   tagline,
-  status
+  status,
 }) => {
   const [bookmarkMovie, setBookmarkMovie] = useRecoilState(bookmarkMovieState);
   const [likedMovie, setLikedMovie] = useRecoilState(likedMovieState);
@@ -75,6 +77,7 @@ const BannerDescription: React.FC<Props> = ({
           <h2 className="text-2xl text-white font-bold sm:text-4xl lg:text-5xl">
             {title}
           </h2>
+          <BadgeStar value={vote_average} />
           <TextDescription title="Genres" text={genre} />
         </div>
         <h3 className="text-xl font-medium italic text-[gray]">{tagline}</h3>
