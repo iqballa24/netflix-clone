@@ -1,4 +1,5 @@
-import Header from '@/components/Header';
+import BottomBar from '@/components/Layout/BottomBar';
+import Header from '@/components/Layout/Header';
 import Head from 'next/head';
 
 interface Props {
@@ -19,6 +20,7 @@ const Layout: React.FC<Props> = ({ title, description, children }) => {
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         {children}
+        <BottomBar />
       </main>
     </div>
   );

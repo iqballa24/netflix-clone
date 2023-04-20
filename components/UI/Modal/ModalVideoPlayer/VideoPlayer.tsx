@@ -41,8 +41,6 @@ const VideoPlayer: React.FC<Props> = ({ movieId, trailer, mediaType }) => {
     }
   };
 
-  console.log({ trailer });
-
   return (
     <div className="relative pt-[56.25%] bg-black/60">
       {trailer ? (

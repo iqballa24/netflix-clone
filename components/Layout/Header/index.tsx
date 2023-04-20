@@ -27,7 +27,7 @@ const Header = () => {
 
   return (
     <header className={`${isScrolled && 'bg-[#141414]'}`}>
-      <div className="flex items-center space-x-2 md:space-x-10">
+      <nav className="flex items-center space-x-2 sm:space-x-10">
         <img
           alt=""
           src="https://rb.gy/ulxxee"
@@ -35,14 +35,14 @@ const Header = () => {
           height={100}
           className="cursor-pointer object-contain"
         />
-        <ul className="hidden space-x-4 md:flex">
+        <ul className="hidden space-x-4 sm:flex">
           {menus.map((menu) => (
             <li key={menu.id} className="headerLink">
               <Link href={menu.path}>{menu.name}</Link>
             </li>
           ))}
         </ul>
-      </div>
+      </nav>
       <div className="flex items-center space-x-4 text-white font-light">
         <span>{user?.displayName || 'user'}</span>
         <button type="button" onClick={logout}>
