@@ -7,12 +7,17 @@ import {
   HiHandThumbUp,
   HiOutlineHandThumbUp,
 } from 'react-icons/hi2';
-import { bookmarkMovieState, likedMovieState } from '@/atoms/modalAtom';
-import { useRecoilState } from 'recoil';
+import {
+  bookmarkMovieState,
+  likedMovieState,
+  movieState,
+} from '@/atoms/modalAtom';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { BadgeStar, TextDescription } from '@/components/UI';
+import toast from 'react-hot-toast';
 
 interface Props {
-  id: string;
+  id: number;
   title: string;
   banner: string;
   overview: string;
@@ -40,24 +45,31 @@ const BannerDescription: React.FC<Props> = ({
   tagline,
   status,
 }) => {
+  const movie = useRecoilValue(movieState);
   const [bookmarkMovie, setBookmarkMovie] = useRecoilState(bookmarkMovieState);
   const [likedMovie, setLikedMovie] = useRecoilState(likedMovieState);
-  const hasAddToBookmark = bookmarkMovie.includes(id);
-  const hasLikedMovie = likedMovie.includes(id);
+  const hasAddToBookmark = bookmarkMovie.find((movie) => movie.id === id);
+  const hasLikedMovie = likedMovie.find((movie) => movie.id === id);
+
+  console.log({ hasAddToBookmark });
 
   const handleBookmark = () => {
+    if (!movie) return toast.error('Failed to add movie to favorite list');
+
     if (hasAddToBookmark) {
-      setBookmarkMovie((prev) => prev.filter((item) => item !== id));
+      setBookmarkMovie((prev) => prev.filter((item) => item.id !== id));
     } else {
-      setBookmarkMovie((prev) => [...prev, id]);
+      setBookmarkMovie((prev) => [...prev, movie]);
     }
   };
 
   const handleLike = () => {
+    if (!movie) return toast.error('Failed to like the movie');
+
     if (hasLikedMovie) {
-      setLikedMovie((prev) => prev.filter((item) => item !== id));
+      setLikedMovie((prev) => prev.filter((item) => item.id !== id));
     } else {
-      setLikedMovie((prev) => [...prev, id]);
+      setLikedMovie((prev) => [...prev, movie]);
     }
   };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '@/atoms/modalAtom';
 import { BASE_URL } from '@/constant/movie';
@@ -16,7 +16,6 @@ const BannerDetail: React.FC<Props> = ({ movie }) => {
 
   const detailMovieHandler = () => {
     setShowModal(true);
-    setCurrentMovie(movie);
   };
 
   const overview =
@@ -25,7 +24,7 @@ const BannerDetail: React.FC<Props> = ({ movie }) => {
       : "We don't have an overview translated in English.";
 
   const movieDescription = {
-    id: movie.id.toString(),
+    id: movie.id,
     title: movie?.title || movie?.original_title || movie?.name,
     banner: `${BASE_URL}${movie.poster_path}`,
     genre: movie?.genres?.map((genre) => genre.name).join(', '),
@@ -38,6 +37,10 @@ const BannerDetail: React.FC<Props> = ({ movie }) => {
     status: movie.status,
     vote_average: movie?.vote_average.toFixed(2),
   };
+
+  useEffect(() => {
+    setCurrentMovie(movie);
+  }, [movie, setCurrentMovie]);
 
   return (
     <div className="flex flex-col space-y-3 py-[7rem] lg:h-screen">
