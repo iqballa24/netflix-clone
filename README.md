@@ -30,7 +30,6 @@ Users should be able to:
 - [x] bookmark and like movie
 - [x] Under development
   - See my list movie
-  - Mobile accessibility
 
 ### Screenshot
 
