@@ -4,7 +4,7 @@ import { Genre } from '@/types/global';
 
 interface Props {
   vote_average: number | string;
-  release_date: number;
+  release_date: number | string;
   overview: string;
   genres: Genre[];
   language: string;

@@ -10,18 +10,18 @@ export const modalState = atom({
   default: false,
 });
 
-export const movieState = atom<Movie | DocumentData | null>({
+export const movieState = atom<Movie | null>({
   key: 'movieState',
   default: null,
 });
 
-export const bookmarkMovieState = atom<string[]>({
+export const bookmarkMovieState = atom<Movie[]>({
   key: 'bookmarkMovie',
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
 
-export const likedMovieState = atom<string[]>({
+export const likedMovieState = atom<Movie[]>({
   key: 'likedMovie',
   default: [],
   effects_UNSTABLE: [persistAtom],

@@ -7,37 +7,47 @@ import {
   HiOutlineHandThumbUp,
   HiHandThumbUp,
 } from 'react-icons/hi2';
-import { useRecoilState } from 'recoil';
-import { bookmarkMovieState, likedMovieState } from '@/atoms/modalAtom';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import {
+  bookmarkMovieState,
+  likedMovieState,
+  movieState,
+} from '@/atoms/modalAtom';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 interface Props {
-  movieId: string;
+  movieId: string | number;
   trailer: string;
   mediaType: string;
 }
 
 const VideoPlayer: React.FC<Props> = ({ movieId, trailer, mediaType }) => {
+  const movie = useRecoilValue(movieState);
   const [muted, setMuted] = useState(false);
   const [bookmarkMovie, setBookmarkMovie] = useRecoilState(bookmarkMovieState);
   const [likedMovie, setLikedMovie] = useRecoilState(likedMovieState);
-  const hasAddToBookmark = bookmarkMovie.includes(movieId);
-  const hasLikedMovie = likedMovie.includes(movieId);
+  const hasAddToBookmark = bookmarkMovie.find((movie) => movie.id === movieId);
+  const hasLikedMovie = likedMovie.find((movie) => movie.id === movieId);
 
   const handleBookmark = () => {
+    if (!movie) return toast.error('Failed to add movie to favorite list');
+
     if (hasAddToBookmark) {
-      setBookmarkMovie((prev) => prev.filter((item) => item !== movieId));
+      setBookmarkMovie((prev) => prev.filter((item) => item.id !== movieId));
     } else {
-      setBookmarkMovie((prev) => [...prev, movieId]);
+      setBookmarkMovie((prev) => [...prev, movie]);
     }
   };
 
   const handleLike = () => {
+    if (!movie) return toast.error('Failed to like the movie');
+
     if (hasLikedMovie) {
-      setLikedMovie((prev) => prev.filter((item) => item !== movieId));
+      setLikedMovie((prev) => prev.filter((item) => item.id !== movieId));
     } else {
-      setLikedMovie((prev) => [...prev, movieId]);
+      setLikedMovie((prev) => [...prev, movie]);
     }
   };
 
@@ -53,7 +63,9 @@ const VideoPlayer: React.FC<Props> = ({ movieId, trailer, mediaType }) => {
         />
       ) : (
         <div className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4">
-          <p className="text-sm md:text-lg text-gray-400">Trailer unavalaible</p>
+          <p className="text-sm md:text-lg text-gray-400">
+            Trailer unavalaible
+          </p>
         </div>
       )}
       <div className="absolute bottom-10 flex w-full items-center justify-between px-10">

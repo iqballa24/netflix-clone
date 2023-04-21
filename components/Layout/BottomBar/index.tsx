@@ -6,8 +6,6 @@ import React from 'react';
 const BottomBar = () => {
   const router = useRouter();
 
-  console.log({ router });
-
   return (
     <nav className="fixed sm:hidden bg-[#141414] w-full left-0 bottom-0 z-10">
       <ul className="flex justify-around">

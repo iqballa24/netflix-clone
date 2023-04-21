@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { Router } from 'next/router';
 import { useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
+import { Toaster } from 'react-hot-toast';
 import NProgress from 'nprogress';
 
 import '@/styles/globals.css';
@@ -27,6 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <RecoilRoot>
       <AuthProvider>
         <Component {...pageProps} />
+        <Toaster />
       </AuthProvider>
     </RecoilRoot>
   );

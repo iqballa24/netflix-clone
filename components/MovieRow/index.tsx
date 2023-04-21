@@ -11,6 +11,7 @@ const MovieRow: React.FC<{ title: string; movies: Movie[] }> = ({
       {movies.map((movie) => (
         <Thumbnail key={movie.id} {...movie} />
       ))}
+      {movies.length === 0 && <p className='text-gray-400 lowercase'>-- {title} not found --</p>}
     </Slider>
   );
 };
