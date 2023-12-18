@@ -1,4 +1,4 @@
-import { modalState } from '@/atoms/modalAtom';
+import { modalState } from '@/atoms/globalAtoms';
 import { ModalVideoPlayer } from '@/components/UI';
 import { Movie } from '@/types/global';
 import { requests_tv_shows } from '@/utils/requests';
