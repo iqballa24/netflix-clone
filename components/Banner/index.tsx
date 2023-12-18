@@ -5,7 +5,7 @@ import { Movie } from '@/types/global';
 import { BASE_URL } from '@/constant/movie';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import { useRecoilState } from 'recoil';
-import { modalState, movieState } from '@/atoms/modalAtom';
+import { modalState, movieState } from '@/atoms/globalAtoms';
 import shortenText from '@/utils/shortenText';
 import Link from 'next/link';
 
