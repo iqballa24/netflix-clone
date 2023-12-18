@@ -11,7 +11,7 @@ import {
   bookmarkMovieState,
   likedMovieState,
   movieState,
-} from '@/atoms/globalAtoms';
+} from '@/atoms/modalAtom';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { BadgeStar, TextDescription } from '@/components/UI';
 import toast from 'react-hot-toast';
