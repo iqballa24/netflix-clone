@@ -51,8 +51,6 @@ const BannerDescription: React.FC<Props> = ({
   const hasAddToBookmark = bookmarkMovie.find((movie) => movie.id === id);
   const hasLikedMovie = likedMovie.find((movie) => movie.id === id);
 
-  console.log({ hasAddToBookmark });
-
   const handleBookmark = () => {
     if (!movie) return toast.error('Failed to add movie to favorite list');
 
