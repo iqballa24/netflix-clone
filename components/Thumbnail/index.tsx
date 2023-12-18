@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { modalState, movieState } from '@/atoms/globalAtoms';
+import { modalState, movieState } from '@/atoms/modalAtom';
 import { Movie } from '@/types/global';
 
 const Thumbnail: React.FC<Movie> = ({ ...movie }) => {
