@@ -1,5 +1,5 @@
-import { bookmarkMovieState, likedMovieState } from '@/atoms/modalAtom';
-import { modalState } from '@/atoms/modalAtom';
+import { bookmarkMovieState, likedMovieState } from '@/atoms/globalAtom';
+import { modalState } from '@/atoms/globalAtom';
 import Banner from '@/components/Banner';
 import Layout from '@/components/Layout';
 import MovieRow from '@/components/MovieRow';

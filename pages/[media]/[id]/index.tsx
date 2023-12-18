@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { Cast, Movie, Review } from '@/types/global';
 import { GetServerSideProps } from 'next';
-import { modalState } from '@/atoms/modalAtom';
+import { modalState } from '@/atoms/globalAtom';
 
 import { ModalVideoPlayer, Slider } from '@/components/UI';
 import Layout from '@/components/Layout';

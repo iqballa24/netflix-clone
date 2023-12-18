@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { modalState, movieState } from '@/atoms/modalAtom';
+import { modalState, movieState } from '@/atoms/globalAtom';
 import { Modal } from '@mui/material';
 import { Element, Genre } from '@/types/global';
 import { HiXCircle } from 'react-icons/hi2';

@@ -4,7 +4,7 @@ import { Movie } from '@/types/global';
 import Banner from '@/components/Banner';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { modalState } from '@/atoms/modalAtom';
+import { modalState } from '@/atoms/globalAtom';
 import { ModalVideoPlayer } from '@/components/UI';
 import MovieRow from '@/components/MovieRow';
 

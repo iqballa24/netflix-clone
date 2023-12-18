@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { useEffect, useState } from 'react';
-import { modalState } from '@/atoms/modalAtom';
+import { modalState } from '@/atoms/globalAtom';
 import { Movie } from '@/types/global';
 import { requests } from '@/utils/requests';
 

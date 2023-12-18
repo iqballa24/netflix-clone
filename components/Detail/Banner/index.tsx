@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { modalState, movieState } from '@/atoms/modalAtom';
+import { modalState, movieState } from '@/atoms/globalAtom';
 import { BASE_URL } from '@/constant/movie';
 import { Movie } from '@/types/global';
 import BannerDescription from '@/components/Detail/Banner/BannerDescription';

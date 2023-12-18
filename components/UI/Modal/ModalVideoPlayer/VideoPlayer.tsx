@@ -12,7 +12,7 @@ import {
   bookmarkMovieState,
   likedMovieState,
   movieState,
-} from '@/atoms/modalAtom';
+} from '@/atoms/globalAtom';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
